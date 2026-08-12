@@ -1,0 +1,70 @@
+/* =========================================================
+   FOGLAND SKETCHBOOK IMAGE OVERRIDES
+   Upload this file next to style.css and keep it loaded AFTER style.css.
+   ========================================================= */
+
+/* Keep the notebook artwork at its intended 16:10 ratio. */
+.book {
+  width: min(92vw, 980px);
+  aspect-ratio: 16 / 10;
+}
+
+/* CLOSED COVER */
+.cover {
+  background-image: url("images/sketchbook/cover.png") !important;
+  background-size: 100% 100% !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+
+  background-color: transparent !important;
+  border: none !important;
+  color: transparent !important;
+}
+
+/* The new cover PNG already contains these details. */
+.cover-number,
+.cover h2,
+.warning,
+.cover-doodle,
+.scribble,
+.cover .tape {
+  display: none !important;
+}
+
+/* OPEN PAGES */
+.paper {
+  position: relative;
+  background-image: url("images/sketchbook/open.png") !important;
+  background-size: 100% 100% !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+  color: var(--ink);
+}
+
+/* The PNG already has a physical paper texture. */
+.paper::after {
+  display: none !important;
+}
+
+/* Match the shape of the new artwork. */
+.page-face {
+  border-radius: 14px !important;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, .28) !important;
+}
+
+/* Give overlaid fanart/messages room away from the physical edges. */
+.fanart-page,
+.message-page,
+.final-page,
+.spread {
+  padding: 7%;
+}
+
+/* IMPORTANT: keep 16:10 even on phones so the asset is not stretched. */
+@media (max-width: 720px) {
+  .book {
+    width: 94vw;
+    aspect-ratio: 16 / 10 !important;
+  }
+}
