@@ -1,0 +1,166 @@
+body{margin:0;background:#111;color:#eee;font-family:Georgia,serif}
+
+/* =========================================================
+   182 SKETCHBOOK — COVER SPINE UPDATE
+   Grey front cover + grey inside cover + cream paper pages.
+   Metal rings appear only for the cover / first opening.
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   INSIDE / BACK OF THE FRONT COVER
+   --------------------------------------------------------- */
+
+.cover-back {
+  position: relative;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.015) 0px,
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    #262520;
+
+  color: #aaa294;
+
+  border: 8px solid #151411;
+
+  box-shadow:
+    inset 0 0 35px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+
+/* ---------------------------------------------------------
+   VERTICAL METAL SPIRAL RINGS — LEFT EDGE
+   --------------------------------------------------------- */
+
+/*
+  The pseudo-elements are attached to both the front cover
+  and the back of the cover so the binding remains visible
+  during the FIRST opening.
+*/
+
+.cover::before,
+.cover-back::before {
+  content: "";
+
+  position: absolute;
+
+  left: -20px;
+  top: 4%;
+  bottom: 4%;
+
+  width: 50px;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+
+      transparent 0px,
+      transparent 14px,
+
+      #090908 15px,
+      #090908 19px,
+
+      #49453e 20px,
+      #8c8578 23px,
+      #b4ac9d 25px,
+
+      #575148 27px,
+      #181715 30px,
+
+      transparent 31px,
+      transparent 52px
+    );
+
+  border-radius: 12px;
+
+  z-index: 35;
+
+  pointer-events: none;
+
+  filter:
+    drop-shadow(3px 2px 2px rgba(0, 0, 0, 0.7));
+}
+
+
+/* dark spine strip where the rings enter the cover */
+
+.cover::after,
+.cover-back::after {
+  content: "";
+
+  position: absolute;
+
+  left: 4px;
+  top: 3%;
+  bottom: 3%;
+
+  width: 12px;
+
+  background:
+    linear-gradient(
+      to right,
+      #090908 0%,
+      #413d36 45%,
+      #151411 100%
+    );
+
+  border-radius: 7px;
+
+  opacity: 0.9;
+
+  z-index: 25;
+
+  pointer-events: none;
+}
+
+
+/*
+  Let the metal loops extend just beyond the page edge.
+  The main .book container still controls the overall scene.
+*/
+
+.cover,
+.cover-back {
+  overflow: visible;
+}
+
+
+/* ---------------------------------------------------------
+   AFTER THE SECOND TURN: HIDE THE COVER BINDING
+   --------------------------------------------------------- */
+
+body.past-cover .cover::before,
+body.past-cover .cover::after,
+body.past-cover .cover-back::before,
+body.past-cover .cover-back::after {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+/* ---------------------------------------------------------
+   PAPER PAGES
+   --------------------------------------------------------- */
+
+/*
+  No extra rule is needed here:
+  your existing .paper class remains cream.
+  Therefore:
+    closed          = grey cover
+    first opening   = grey inside cover + cream paper
+    later pages     = cream paper + cream paper
+*/
+
+
+/* Keep the book ratio stable on smaller screens. */
+@media (max-width: 720px) {
+  .book {
+    aspect-ratio: 16 / 10;
+  }
+}
