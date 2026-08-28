@@ -426,7 +426,6 @@ button {
   max-height: 65%;
   object-fit: contain;
   opacity: .85;
-  filter: grayscale(1) contrast(1.15);
 }
 
 .handwritten,
